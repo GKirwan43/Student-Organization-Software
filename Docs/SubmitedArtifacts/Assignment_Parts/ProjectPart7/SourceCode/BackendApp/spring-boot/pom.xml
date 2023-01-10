@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>spring-boot-complete</artifactId>
+	<version>1.0.0-Dev</version>
+	<name>spring-boot-complete</name>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+<!-- Spring Boot Starters___________________________________________________________________________ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+<!-- Spring boot Security___________________________________________________________________________ -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+<!-- Utility imports___________________________________________________________________________ -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+		<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.10</version>
+        </dependency>
+
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+<!-- Loogging imports___________________________________________________________________________ --> 
+		<dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.13.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.11.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.28</version>
+        </dependency>
+<!-- Azure imports___________________________________________________________________________ -->
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-cosmos</artifactId>
+            <version>4.39.0</version>
+        </dependency>
+
+		<dependency>
+  			<groupId>com.azure.spring</groupId>
+  			<artifactId>spring-cloud-azure-starter-data-cosmos</artifactId>
+  			<version>4.4.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.azure.spring</groupId>
+			<artifactId>spring-cloud-azure-starter</artifactId>
+			<version>4.4.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.azure/azure-core -->
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-core</artifactId>
+			<version>1.34.0</version>
+		</dependency>
+		
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.microsoft.azure</groupId>
+				<artifactId>azure-spring-cloud-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<configuration>
+					<subscriptionId>214c6eeb-ab40-421c-b2c2-6b56ac892714</subscriptionId>
+					<clusterName>jetlagku</clusterName>
+					<appName>jetlag</appName>
+					<isPublic>true</isPublic>
+					<deployment>
+						<cpu>1</cpu>
+						<memoryInGB>1</memoryInGB>
+						<instanceCount>1</instanceCount>
+						<runtimeVersion>Java 8</runtimeVersion>
+						<resources>
+							<resource>
+								<filtering/>
+								<mergeId/>
+								<targetPath/>
+								<directory>${project.basedir}/target</directory>
+								<includes>
+									<include>*.jar</include>
+								</includes>
+							</resource>
+						</resources>
+					</deployment>
+				</configuration>
+			</plugin>
+		    <!-- <plugin>
+		        <groupId>com.microsoft.azure</groupId>
+		        <artifactId>azure-spring-cloud-maven-plugin</artifactId>
+		        <version>1.11.0</version>
+		        <configuration>
+		            <subscriptionId>214c6eeb-ab40-421c-b2c2-6b56ac892714</subscriptionId>
+		            <clusterName>jetlagku</clusterName>
+		            <appName>jetlag</appName>
+		            <isPublic>true</isPublic>
+		            <deployment>
+		                <cpu>1</cpu>
+		                <memoryInGB>1</memoryInGB>
+		                <instanceCount>1</instanceCount>
+		                <runtimeVersion>Java 8</runtimeVersion>
+		                <resources>
+		                    <resource>
+		                        <filtering/>
+		                        <mergeId/>
+		                        <targetPath/>
+		                        <directory>${project.basedir}/target</directory>
+		                        <includes>
+		                            <include>*.jar</include>
+		                        </includes>
+		                    </resource>
+		                </resources>
+		            </deployment>
+		        </configuration>
+		    </plugin> -->
+			<plugin>
+				<groupId>com.microsoft.azure</groupId>
+    			<artifactId>azure-spring-apps-maven-plugin</artifactId>
+    			<version>1.13.0</version>
+				    <configuration>
+						<subscriptionId>214c6eeb-ab40-421c-b2c2-6b56ac892714</subscriptionId>
+						<clusterName>jetlagku</clusterName>
+						<appName>jetlag</appName>
+					</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

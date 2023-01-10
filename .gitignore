@@ -1,0 +1,6 @@
+# ignore temp word files
+~$*
+.class
+
+#ignore vscode settings
+.vscode

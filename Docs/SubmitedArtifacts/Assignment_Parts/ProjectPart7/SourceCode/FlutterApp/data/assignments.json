@@ -1,0 +1,11 @@
+[
+    {
+        "id": 0,
+        "name": "Assignment 1",
+        "description": "This is an example description on this assignment.",
+        "due": {
+            "date": "10/12/2022",
+            "time": "12:00:00"
+        }
+    }
+]

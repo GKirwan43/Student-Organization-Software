@@ -1,0 +1,13 @@
+JetLag\security\providers\CustomIdentityAuthenticationProvider.class
+JetLag\DatabaseAccess\DataBaseAccess.class
+JetLag\security\basicauth\BasicAuthWebSecurityConfiguration.class
+JetLag\DatabaseAccess\classNotes.class
+JetLag\Application.class
+JetLag\DatabaseAccess\ClassesRepository.class
+JetLag\DatabaseAccess\ClassTab.class
+JetLag\security\basicauth\AppBasicAuthenticationEntryPoint.class
+JetLag\security\encoders\Sha512PasswordEncoder.class
+JetLag\HelloController.class
+JetLag\security\basicauth\service\CustomUserDetailsService.class
+JetLag\DatabaseAccess\UserRepository.class
+JetLag\DatabaseAccess\UserSettings.class

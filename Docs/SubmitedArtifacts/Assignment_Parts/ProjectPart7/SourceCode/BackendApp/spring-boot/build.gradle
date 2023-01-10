@@ -1,0 +1,85 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.6'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'java'
+	id "com.microsoft.azure.azurewebapp" version "1.1.0"
+	id 'maven-publish'
+}
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'edu.bbte.gradleex.mavenplugin'
+            artifactId = 'gradleex-mavenplugin'
+            version = '1.0.0-SNAPSHOT'
+
+            from components.java
+        }
+    }
+}
+
+group = 'com.example'
+version = '1.0.0-Dev'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+azurewebapp {
+    subscription = '214c6eeb-ab40-421c-b2c2-6b56ac892714'
+    resourceGroup = 'Classes'
+    appName = 'jetlag'
+    pricingTier = 'basic'
+	region = 'Central US'
+
+}
+
+ext {
+	set('springCloudAzureVersion', "4.4.1")
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-test'
+	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	// https://mvnrepository.com/artifact/org.springframework.ldap/spring-ldap-core
+	implementation 'org.springframework.ldap:spring-ldap-core:2.4.1'
+	// https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
+	implementation 'javax.persistence:javax.persistence-api:2.2'
+	// https://mvnrepository.com/artifact/javax.transaction/jta
+	implementation 'javax.transaction:jta:1.1'
+	// https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons
+	implementation 'org.springframework.data:spring-data-commons:2.7.5'
+	// https://mvnrepository.com/artifact/com.azure/azure-cosmos
+	//implementation 'com.azure:azure-cosmos:4.4.0'
+	// https://mvnrepository.com/artifact/commons-io/commons-io
+	implementation 'commons-io:commons-io:2.11.0'
+	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+	implementation 'org.slf4j:slf4j-api:2.0.3'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	//Database Access
+	implementation 'com.azure.spring:spring-cloud-azure-starter'
+  	implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
+	// https://mvnrepository.com/artifact/com.azure.spring/spring-cloud-azure-starter
+	implementation 'com.azure.spring:spring-cloud-azure-starter:4.4.1'
+	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+	implementation 'org.slf4j:slf4j-api:1.7.36'
+
+
+
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
